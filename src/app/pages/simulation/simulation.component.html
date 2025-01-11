@@ -1,0 +1,67 @@
+<div class="container">
+    <div class="simulation">
+        <div [class]="powerOn ? 'screen screen-active' : 'screen'">
+            <div class="voltage">
+                <span class="value">{{volts}}</span>
+                <span class="unit">V</span>
+            </div>
+            <div class="current">
+                <span class="value">{{amps}}</span>
+                <span class="unit">A</span>
+            </div>
+            <div class="temperature">
+                <span class="value">{{temp}}</span>
+                <span class="unit">°C</span>
+            </div>
+        </div>
+        <div class="actions-container">
+            <div class="input-group">
+                <!-- <label for="portSelector">Select port</label> -->
+                <!-- <select [(ngModel)]="selectedPort" name="" id="portSelector">
+                    <option value="start">---</option>
+                    @for (port of connectedPorts; track $index) {
+                        <option [value]="port.path">{{port.path}}</option>
+                    }
+                </select> -->
+                <mat-form-field>
+                    <mat-label>--select port--</mat-label>
+                    <mat-select [(value)]="selectedPort">
+                      <mat-option></mat-option>
+                      @for (port of connectedPorts; track port) {
+                        <mat-option [value]="port.path">{{ port.path }}</mat-option>
+                      }
+                    </mat-select>
+                  </mat-form-field>
+            </div>
+            <div class="input-group controls">
+                <app-dialpad 
+                [class]="powerOn ? 'inactive' : 'active'"
+                (valueChange)="getValue('volts', $event)"
+                [maxValue]="VMaxValue"
+                [step]="0.01"
+                [disabled]="!powerOn"
+                [label]="'volts'"/>
+
+                <app-dialpad 
+                [class]="powerOn ? 'inactive' : 'active'"
+                (valueChange)="getValue('amps', $event)"
+                [maxValue]="AMaxValue"
+                [step]="0.5"
+                [disabled]="!powerOn"
+                [label]="'Amps'"/>
+
+                <app-dialpad 
+                [class]="powerOn ? 'inactive' : 'active'"
+                (valueChange)="getValue('temp', $event)"
+                [maxValue]="TMaxValue"
+                [step]="1"
+                [disabled]="!powerOn"
+                [label]="'Temp'"/>
+            </div>
+            <div class="input-group actions">
+                <button mat-flat-button [class]="powerOn ? 'on': 'off'" (click)="togglePower()">Power {{powerOn ? 'Off':'On'}}</button>
+                <!-- <button (click)="togglePower()">Power {{powerOn ? 'Off':'On'}}</button> -->
+            </div>
+        </div>
+    </div>
+</div>

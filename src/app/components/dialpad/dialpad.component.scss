@@ -1,0 +1,28 @@
+@use '@angular/material' as mat;
+
+
+  .mat-mdc-slider{
+    min-width: 100%;
+
+    .mat-focus-indicator{
+        display: none;
+    }
+  }
+
+
+.container{
+    display: flex;
+    height: 100%;
+    align-items: center;
+    position: relative;
+    // background-color: white;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 1rem;
+    
+    .dialpad{
+        rotate: -90deg;
+        margin: 0 0 1rem 0;
+    }
+
+}

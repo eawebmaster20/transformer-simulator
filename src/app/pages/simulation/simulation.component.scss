@@ -1,0 +1,100 @@
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background-color: #44628A;
+
+    .simulation{
+        width: 46.5rem;
+        height: 21.375rem;
+        background-color: #241010;
+        border-radius: 0.5rem;
+        display: flex;
+        align-items: center;
+        padding: 0 1rem 0 2.57rem ;
+        gap: 1rem;
+
+        .screen{
+            font-family: "Langar", serif;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 3rem;
+            padding-left: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            width: 70%;
+            height: 16.25rem;
+            background-color: #350000;
+            color: wheat;
+            border-radius: 0.5rem;
+            transition: background-color 0.5s ease-in-out;
+        }
+        
+        .screen-active{
+            background-color: #F5F5DC;
+            color: #241010;
+            box-shadow: inset 0px 0px 10px 2px #f3f3f1;
+        }
+
+        .actions-container{
+            display: flex;
+            justify-content: space-between;
+            width: 30%;
+            height: 100%;
+            flex-direction: column;
+            
+            select{
+                padding: 0.5rem;
+            }
+            
+            .controls{
+                justify-content: space-between;
+            }
+
+            .actions{
+                button{
+                    width: 100%;
+                }
+            }
+
+            .input-group{
+                display: flex;
+                // flex-direction: column;
+                
+                &:first-child{
+                    margin-top: 2.57rem;
+                }
+                
+                &:last-child{
+                    margin-bottom: 2.57rem;
+                }
+
+                label{
+                    font-size: 1.2rem;
+                    color: #F5F5DC;
+                }
+            }
+
+            app-dialpad{
+                width: 56px;
+                height: 100px;
+            }
+
+        }
+    }
+
+    
+.active{
+    background-color: #626466;
+    color: rgb(199 199 199);
+    border-radius: 1rem;
+}
+
+.inactive{
+    background-color: #d2d1d1;
+    color: #070202;
+    border-radius: 1rem;
+}
+}

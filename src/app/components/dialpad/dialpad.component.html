@@ -1,0 +1,6 @@
+<div class="container">
+    <span class="value">{{label}}</span>
+    <mat-slider [disabled]="disabled" [min]="minValue" [max]="maxValue" [step]="step" class="dialpad">
+        <input (ngModelChange)="updateState()"  type="range" [(ngModel)]="value" matSliderThumb>
+      </mat-slider>
+</div>

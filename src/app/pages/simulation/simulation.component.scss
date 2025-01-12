@@ -83,6 +83,25 @@
             }
 
         }
+
+        // custom amps simulation
+        .amps-simulation {
+            height: 100%;
+            margin-top: 5.1rem;
+
+            .start-sim {
+                // background-color: #3f4948;
+                // color: rgb(202, 202, 202);
+                width: 100%;
+            }
+            &__result {
+                color: rgb(218, 229, 228);
+                .title {
+                    font-weight: 600;
+                }
+            }
+        }
+        
     }
 
     
@@ -98,3 +117,13 @@
     border-radius: 1rem;
 }
 }
+
+// .mat-mdc-unelevated-button:not(:disabled) {
+//     color: var(--mdc-filled-button-label-text-color, var(--mat-sys-on-primary));
+//     background-color: var(--mdc-filled-button-container-color, var(--mat-sys-primary));
+// }
+
+// .mat-mdc-unelevated-button:not(:disabled) {
+//     color: var(--mdc-filled-button-label-text-color, var(--mat-sys-on-primary));
+//     background-color: var(--mdc-filled-button-container-color, var(--mat-sys-primary));
+// }

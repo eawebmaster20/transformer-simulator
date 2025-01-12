@@ -1,13 +1,15 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
 import {MatButtonModule} from '@angular/material/button';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
 import { DialpadComponent } from '../../components/dialpad/dialpad.component';
 
 @Component({
   selector: 'app-simulation',
   standalone:true,
-  imports: [FormsModule, DialpadComponent, MatSelectModule, MatButtonModule],
+  imports: [FormsModule, DialpadComponent, MatSelectModule, MatButtonModule, MatInputModule, MatFormFieldModule],
   templateUrl: './simulation.component.html',
   styleUrl: './simulation.component.scss'
 })
@@ -22,6 +24,8 @@ export class SimulationComponent implements OnInit{
   VMaxValue: number = 405;
   AMaxValue: number = 100;
   TMaxValue: number = 100;
+  ampsValue = signal<number>(0);
+  hasAmpsSimStart:boolean = false;
 
   constructor(private cdr: ChangeDetectorRef) { }
   
@@ -88,5 +92,17 @@ export class SimulationComponent implements OnInit{
     }
     this.powerOn =!this.powerOn;
     this.sendDataToPort('COM4', '{path: Hello Serial Port, baudRate:9600}')
+  }
+
+  // amps simulation
+  startSimulation(value:string) {
+    
+    if (typeof value !== 'number') {
+      this.ampsValue.set(0);
+    }
+    
+    this.ampsValue.set(+value);
+    this.hasAmpsSimStart = true;
+    
   }
 }

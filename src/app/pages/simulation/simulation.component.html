@@ -14,6 +14,32 @@
                 <span class="unit">°C</span>
             </div>
         </div>
+
+        <!-- input field -->
+        <section class="amps-simulation">
+            <div class="amps-simulation-field">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Amps value</mat-label>
+                    <input type="number" matInput placeholder="Eg. 24" [disabled]="!powerOn" #AmpsSimInput>
+                </mat-form-field>
+                <button mat-flat-button 
+                    class="start-sim" 
+                    [disabled]="!powerOn" 
+                    (click)="startSimulation(AmpsSimInput.value)"
+                >Start simulation</button>
+            </div>
+            <section class="amps-simulation__result">
+                @if (hasAmpsSimStart) {
+                    <p class="title">Simulation</p>
+                    <p class="amps-simulation__value">
+                        {{ ampsValue() }} Amps
+                    </p>
+
+                }
+            </section>
+
+        </section>
+        
         <div class="actions-container">
             <div class="input-group">
                 <!-- <label for="portSelector">Select port</label> -->

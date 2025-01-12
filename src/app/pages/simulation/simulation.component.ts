@@ -24,8 +24,8 @@ export class SimulationComponent implements OnInit{
   VMaxValue: number = 405;
   AMaxValue: number = 100;
   TMaxValue: number = 100;
-  ampsValue = signal<number>(0);
-  hasAmpsSimStart:boolean = false;
+  isActive:boolean = false;
+  showInfoMessage:boolean = true;
 
   constructor(private cdr: ChangeDetectorRef) { }
   
@@ -95,14 +95,8 @@ export class SimulationComponent implements OnInit{
   }
 
   // amps simulation
-  startSimulation(value:string) {
-    
-    if (typeof value !== 'number') {
-      this.ampsValue.set(0);
-    }
-    
-    this.ampsValue.set(+value);
-    this.hasAmpsSimStart = true;
-    
-  }
+  handleAmpsInput(value:string) {
+    this.isActive = value ? true : false;
+    this.showInfoMessage = false;
+  };
 }

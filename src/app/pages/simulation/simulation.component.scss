@@ -40,7 +40,7 @@
 
         .actions-container{
             display: flex;
-            justify-content: space-between;
+            // justify-content: space-between; // commented to remove spacing between elements
             width: 30%;
             height: 100%;
             flex-direction: column;
@@ -116,6 +116,12 @@
     color: #070202;
     border-radius: 1rem;
 }
+}
+
+.info {
+    // color: rgb(199 199 199);
+    color: #00dddd;
+    font-size: 11px;
 }
 
 // .mat-mdc-unelevated-button:not(:disabled) {

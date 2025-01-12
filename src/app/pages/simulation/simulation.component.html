@@ -14,6 +14,33 @@
                 <span class="unit">°C</span>
             </div>
         </div>
+
+        <!-- input field -->
+        <section class="amps-simulation">
+            <div class="amps-simulation-field">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Amps value</mat-label>
+                    <input type="number" matInput placeholder="Eg. 24" (input)="handleAmpsInput(AmpsSimInput.value)" #AmpsSimInput>
+                </mat-form-field>
+                
+                <div class="input-group actions">
+                    <button mat-flat-button 
+                        class="start-sim" 
+                        [disabled]="!isActive" 
+                        [class]="powerOn ? 'on': 'off'" 
+                        (click)="togglePower()"
+                    >
+                        Power {{powerOn ? 'Off':'On'}}
+                    </button>
+                    @if (showInfoMessage) {
+                        <small class="info">Enter amps value to activate power button</small>
+                    }
+                    <!-- <button (click)="togglePower()">Power {{powerOn ? 'Off':'On'}}</button> -->
+                </div>
+            </div>
+
+        </section>
+        
         <div class="actions-container">
             <div class="input-group">
                 <!-- <label for="portSelector">Select port</label> -->
@@ -58,10 +85,10 @@
                 [disabled]="!powerOn"
                 [label]="'Temp'"/>
             </div>
-            <div class="input-group actions">
-                <button mat-flat-button [class]="powerOn ? 'on': 'off'" (click)="togglePower()">Power {{powerOn ? 'Off':'On'}}</button>
+            <!-- <div class="input-group actions"> -->
+                <!-- <button mat-flat-button [class]="powerOn ? 'on': 'off'" (click)="togglePower()">Power {{powerOn ? 'Off':'On'}}</button> -->
                 <!-- <button (click)="togglePower()">Power {{powerOn ? 'Off':'On'}}</button> -->
-            </div>
+            <!-- </div> -->
         </div>
     </div>
 </div>

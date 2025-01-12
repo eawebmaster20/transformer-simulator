@@ -20,23 +20,24 @@
             <div class="amps-simulation-field">
                 <mat-form-field class="example-full-width">
                     <mat-label>Amps value</mat-label>
-                    <input type="number" matInput placeholder="Eg. 24" [disabled]="!powerOn" #AmpsSimInput>
+                    <input type="number" matInput placeholder="Eg. 24" (input)="handleAmpsInput(AmpsSimInput.value)" #AmpsSimInput>
                 </mat-form-field>
-                <button mat-flat-button 
-                    class="start-sim" 
-                    [disabled]="!powerOn" 
-                    (click)="startSimulation(AmpsSimInput.value)"
-                >Start simulation</button>
+                
+                <div class="input-group actions">
+                    <button mat-flat-button 
+                        class="start-sim" 
+                        [disabled]="!isActive" 
+                        [class]="powerOn ? 'on': 'off'" 
+                        (click)="togglePower()"
+                    >
+                        Power {{powerOn ? 'Off':'On'}}
+                    </button>
+                    @if (showInfoMessage) {
+                        <small class="info">Enter amps value to activate power button</small>
+                    }
+                    <!-- <button (click)="togglePower()">Power {{powerOn ? 'Off':'On'}}</button> -->
+                </div>
             </div>
-            <section class="amps-simulation__result">
-                @if (hasAmpsSimStart) {
-                    <p class="title">Simulation</p>
-                    <p class="amps-simulation__value">
-                        {{ ampsValue() }} Amps
-                    </p>
-
-                }
-            </section>
 
         </section>
         
@@ -84,10 +85,10 @@
                 [disabled]="!powerOn"
                 [label]="'Temp'"/>
             </div>
-            <div class="input-group actions">
-                <button mat-flat-button [class]="powerOn ? 'on': 'off'" (click)="togglePower()">Power {{powerOn ? 'Off':'On'}}</button>
+            <!-- <div class="input-group actions"> -->
+                <!-- <button mat-flat-button [class]="powerOn ? 'on': 'off'" (click)="togglePower()">Power {{powerOn ? 'Off':'On'}}</button> -->
                 <!-- <button (click)="togglePower()">Power {{powerOn ? 'Off':'On'}}</button> -->
-            </div>
+            <!-- </div> -->
         </div>
     </div>
 </div>
